@@ -244,6 +244,26 @@
 <p class="copyright"><small>&copy; 2025 Portfolio by Rone Kurihara All Rights Reserved.</small></p>
 
 <script>
+	
+// contact送信後thanks.htmlを開くためのjs //
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault(); // HTML の通常送信を止める
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  fetch(form.action, {
+    method: "POST",
+    body: data
+  })
+  .then(() => {
+    window.location.href = "https://roneworks.github.io/portfolio/thanks.html";
+  })
+  .catch(() => {
+    alert("送信に失敗しました。");
+  });
+});
+	
 document.querySelectorAll('span[data-link]').forEach(function(span) {
   span.style.cursor = 'pointer';
   span.addEventListener('click', function(event) {
